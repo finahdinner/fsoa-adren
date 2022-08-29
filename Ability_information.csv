@@ -1,0 +1,12 @@
+name,min_dmg_x10,max_dmg_x10,duration,cooldown,channeled,can_crit,hits,adrenaline,ability_type,hitsplat_profile
+abs5,180,900,5,1,1,1,5,-50,spec,12345
+abs4,180,900,4,1,1,1,4,-50,spec,1234
+abs3,180,900,3,1,1,1,3,-50,spec,123
+asphyxiate7,376,1880,7,34,1,1,4,-15,threshold,1357
+asphyxiate5,376,1880,5,34,1,1,3,-15,threshold,135
+asphyxiate3,376,1880,3,34,1,1,2,-15,threshold,13
+2h wild magic,500,2150,3,34,0,1,2,-15,threshold,12
+dw wild magic,500,2150,3,34,0,1,2,-15,threshold,23
+omnipower,900,1800,3,50,0,1,4,-60,ult,2333
+guthix staff,1400,3000,3,3,0,1,1,-25,spec,1
+dragon breath,376,1880,3,17,0,1,1,8,basic,1
