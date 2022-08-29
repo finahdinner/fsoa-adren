@@ -3,6 +3,8 @@ Focuses here:
 
 1) GUI!!!
 
+I have already added a label to the red dashed line on the graph (showing the exact probability)
+
 """
 import itertools as it
 import math
