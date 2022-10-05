@@ -1,5 +1,5 @@
 # fsoa-adren
-Python script used to determine the probabilities associated with refunding X amount of adrenaline during FSOA spec.
+Python script used to determine the probabilities associated with refunding X amount of adrenaline during the Fractured Staff of Armadyl (FSOA) spec.
 Also asks the user to confirm whether certain buffs (Tsunami, Natural Instinct, Ring of Vigour, Invigorating) are present or not.
 In the end, it returns the adrenaline vs probability plot, and shows what the chance of refunding the specified amount of adrenaline is.
 
