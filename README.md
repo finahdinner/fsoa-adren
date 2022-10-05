@@ -6,3 +6,5 @@ In the end, it returns the adrenaline vs probability plot, and shows what the ch
 ## Example plot - chance of returning 45% adrenaline from a 5-hit ABS with all buffs active
 
 ![](Images/example_plot1.png)
+
+As shown above, there is a 66.3% chance of refunding 45% adrenaline with the conditions stated.
