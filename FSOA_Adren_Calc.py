@@ -1,7 +1,10 @@
 """
 Focuses here:
 
-1) GUI!!!
+1) Segment into functions. Not only for importing purposes, but for pytest purposes. 
+Allow variables to be passed into a calculation function explicitly -- allows for pytest
+(eg tsunami = True, invig = 4 etc)
+2) GUI!!!
 
 I have already added a label to the red dashed line on the graph (showing the exact probability)
 
@@ -16,7 +19,7 @@ import matplotlib.transforms as transforms
 
 class Ability:
     def __init__(self, name, min_dmg_x10, max_dmg_x10, duration, cooldown, channeled, can_crit,\
-                 hits, adrenaline, ability_type, hitsplat_profile):
+                hits, adrenaline, ability_type, hitsplat_profile):
         self.name = name  # Ability name
         self.min_dmg_x10 = min_dmg_x10  # min damage multipled by 10 (so it will always be an integer)
         self.max_dmg_x10 = max_dmg_x10  # max damage multipled by 10 (so it will always be an integer)
@@ -177,7 +180,7 @@ def hitsplat_adren(hitsplat_type, crit):
     # crit is either 1 or 0
     if hitsplat_type == 'ability':
         adren_refund = natural_instinct * (tsunami * crit)
-    elif hitsplat_type == 'auto':
+    else: # ie hitsplat_type == 'auto'
         adren_refund = natural_instinct * (tsunami * crit + (2 + 0.2 * invigorating_rank))
     return adren_refund
 
@@ -202,7 +205,7 @@ def crit_end(hitsplats):
 def non_crit_end(hitsplats):
     if hitsplats == 1:
         stream_probability = (1-ability_crit_chance)
-    elif hitsplats > 1:
+    else: # ie hitsplats > 1
         stream_probability = ability_crit_chance * auto_crit_chance**max((hitsplats-2),0) * (1-auto_crit_chance)
     return stream_probability
 
@@ -349,16 +352,16 @@ success_percentage = success_probability * 100
 
 if natural_instinct == 2 and tsunami == 10:
         print(f"Chance of refunding {adren_refund_goal} adrenaline from {ability_choice.name}"
-              f" with Tsunami & Natty is {round(success_percentage, 1)}%.")
+            f" with Tsunami & Natty is {round(success_percentage, 1)}%.")
 elif natural_instinct == 1  and tsunami == 10:
     print(f"Chance of refunding {adren_refund_goal} adrenaline from {ability_choice.name}"
-          f" with Tsunami (no Natty) is {round(success_percentage, 1)}%.")
+        f" with Tsunami (no Natty) is {round(success_percentage, 1)}%.")
 elif natural_instinct == 2  and tsunami == 0:
     print(f"Chance of refunding {adren_refund_goal} adrenaline from {ability_choice.name}"
-          f" with Natty (no Tsunami) is {round(success_percentage, 8)}%.")
+        f" with Natty (no Tsunami) is {round(success_percentage, 8)}%.")
 elif natural_instinct == 1  and tsunami == 0:
     print(f"Chance of refunding {adren_refund_goal} adrenaline from {ability_choice.name},"
-          f" with neither Tsunami nor Natty, is {success_percentage}%.")
+        f" with neither Tsunami nor Natty, is {success_percentage}%.")
 
 # creating a sorted list of all data items
 sorted_full_data = sorted(full_data, key=lambda a:a[0])
@@ -389,15 +392,5 @@ trans = transforms.blended_transform_factory(
     ax.get_yticklabels()[0].get_transform(), ax.transData)
 ax.text(0,success_probability, f"{success_probability:.3f}", color="red", transform=trans,
         ha="right", va="center")
-
-# # plotting the cumulative probability graph from 0 to max adren
-# plt.plot(ascending_adren_values, cumulative_probabilities)
-# plt.title("Adrenaline Refunded (x) vs Probability (y)")
-# plt.xlabel("Adrenaline Refunded")
-# # setting limits of the x axis
-# plt.xlim([0,100])
-# plt.ylabel("Probability")
-# # labels the success probability (relating to the adren refund goal)
-# plt.axhline(y=success_probability, color='black', linestyle='--')
-
+        
 plt.show()
